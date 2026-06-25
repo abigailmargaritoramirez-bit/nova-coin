@@ -1,0 +1,322 @@
+{
+  "@context": "https://resource-ledger.org/schema/unified/v1",
+  
+  "universal_resource_specification": {
+    "version": "1.0.0",
+    "timestamp": "2026-06-25T00:00:00Z"
+  },
+
+  "nova_ecosystem": {
+    "name": "NOVA COIN",
+    "symbol": "NVC",
+    "description": "Unified digital asset ecosystem with integrated resource ledger"
+  },
+
+  "urc_structure": {
+    "master_urc": {
+      "format": "SHA-256 hexadecimal",
+      "length": 64,
+      "example": "8d7c9e1af4b3c2e1d6f5a9b8c7d4e3f2a1b6c5d4e9f8a7b3c2d1e0f9a8b7c6d5"
+    },
+    "compact_urc": {
+      "format": "URC-NOVA-RID{ID}-NTK{ID}-NWA{ID}-NCT{ID}",
+      "example": "URC-NOVA-RID8A92F1-NTK4B11C8-NWA7F92D1-NCTAB45EF"
+    }
+  },
+
+  "identifier_components": {
+    "URC": {
+      "name": "Universal Resource Code",
+      "type": "Master Identifier",
+      "length": 64,
+      "algorithm": "SHA-256",
+      "immutable": true
+    },
+    "RID": {
+      "name": "Resource ID",
+      "prefix": "RID",
+      "format": "RID-XXXXXX",
+      "length": 9,
+      "scope": "Identifies any digital resource"
+    },
+    "NTK": {
+      "name": "Nova Token ID",
+      "prefix": "NTK",
+      "format": "NTK-XXXXXX",
+      "length": 9,
+      "scope": "Identifies tokens within NOVA ecosystem"
+    },
+    "NWA": {
+      "name": "Nova Wallet Address",
+      "prefix": "NWA",
+      "format": "NWA-XXXXXX",
+      "length": 9,
+      "scope": "Identifies wallet/account ownership"
+    },
+    "NCT": {
+      "name": "Nova Contract ID",
+      "prefix": "NCT",
+      "format": "NCT-XXXXXX",
+      "length": 9,
+      "scope": "Identifies smart contracts"
+    },
+    "NDAO": {
+      "name": "Nova DAO/Governance ID",
+      "prefix": "NDAO",
+      "format": "NDAO-XXXX",
+      "length": 9,
+      "scope": "Identifies governance structures"
+    }
+  },
+
+  "data_hierarchy": {
+    "level_1": "Resource (RID)",
+    "level_2": "Token (NTK)",
+    "level_3": "Wallet (NWA)",
+    "level_4": "Contract (NCT)",
+    "level_5": "Governance (NDAO)",
+    "level_6": "Cryptographic Hash (SHA-256)",
+    "level_7": "Universal Resource Code (URC)"
+  },
+
+  "resource_types": {
+    "digital_asset": {
+      "description": "Digital assets and tokens",
+      "example_id": "NTK-4B11C8"
+    },
+    "token": {
+      "description": "ERC-20 or other token standards",
+      "example_id": "NTK-5C22D9"
+    },
+    "contract": {
+      "description": "Smart contracts",
+      "example_id": "NCT-AB45EF"
+    },
+    "wallet": {
+      "description": "Addresses and wallets",
+      "example_id": "NWA-7F92D1"
+    },
+    "governance": {
+      "description": "DAO and governance structures",
+      "example_id": "NDAO-001"
+    },
+    "document": {
+      "description": "Issued documents and certificates",
+      "example_id": "RID-8A92F1"
+    },
+    "software": {
+      "description": "Software packages and utilities",
+      "example_id": "RID-9B03G2"
+    }
+  },
+
+  "universal_resource_object": {
+    "@context": "https://resource-ledger.org/schema/unified/v1",
+    
+    "uid": {
+      "description": "Unique identifier (same as URC)",
+      "type": "string",
+      "example": "URC-000001"
+    },
+
+    "identifiers": {
+      "resource_id": {
+        "description": "Resource identifier",
+        "type": "string",
+        "example": "RID-8A92F1"
+      },
+      "token_id": {
+        "description": "Token identifier",
+        "type": "string",
+        "example": "NTK-4B11C8"
+      },
+      "wallet_id": {
+        "description": "Wallet identifier",
+        "type": "string",
+        "example": "NWA-7F92D1"
+      },
+      "contract_id": {
+        "description": "Contract identifier",
+        "type": "string",
+        "example": "NCT-AB45EF"
+      },
+      "governance_id": {
+        "description": "Governance identifier",
+        "type": "string",
+        "example": "NDAO-001"
+      }
+    },
+
+    "metadata": {
+      "name": {
+        "description": "Human-readable name",
+        "type": "string",
+        "example": "Nova Resource"
+      },
+      "type": {
+        "description": "Resource type classification",
+        "type": "string",
+        "enum": ["digital_asset", "token", "contract", "wallet", "governance", "document", "software"]
+      },
+      "description": {
+        "description": "Detailed description",
+        "type": "string"
+      },
+      "created_at": {
+        "description": "Creation timestamp (ISO 8601)",
+        "type": "string",
+        "example": "2026-06-25T00:00:00Z"
+      },
+      "updated_at": {
+        "description": "Last update timestamp",
+        "type": "string"
+      }
+    },
+
+    "owner": {
+      "address": {
+        "description": "Owner Ethereum address",
+        "type": "string",
+        "example": "0x742d35Cc6634C0532925a3b844Bc9e7595f2e450"
+      },
+      "wallet_id": {
+        "description": "Associated wallet ID",
+        "type": "string",
+        "example": "NWA-7F92D1"
+      },
+      "verification_status": {
+        "description": "Ownership verification status",
+        "type": "string",
+        "enum": ["verified", "pending", "unverified"]
+      }
+    },
+
+    "verification": {
+      "algorithm": {
+        "description": "Cryptographic algorithm used",
+        "type": "string",
+        "example": "SHA-256"
+      },
+      "hash": {
+        "description": "Verification hash",
+        "type": "string"
+      },
+      "status": {
+        "description": "Verification status",
+        "type": "string",
+        "enum": ["verified", "pending", "failed"]
+      },
+      "verified_at": {
+        "description": "Verification timestamp",
+        "type": "string"
+      },
+      "verified_by": {
+        "description": "Verifying authority",
+        "type": "string"
+      }
+    },
+
+    "blockchain": {
+      "network": {
+        "description": "Blockchain network",
+        "type": "string",
+        "example": "Ethereum"
+      },
+      "consensus": {
+        "description": "Consensus mechanism",
+        "type": "string",
+        "example": "ProofOfStake"
+      },
+      "smart_contracts": {
+        "description": "Associated smart contracts",
+        "type": "array",
+        "items": {
+          "contract_address": "string",
+          "contract_id": "string",
+          "type": "string"
+        }
+      }
+    },
+
+    "urc": {
+      "master": {
+        "description": "Master URC identifier (SHA-256)",
+        "type": "string",
+        "length": 64,
+        "example": "8d7c9e1af4b3c2e1d6f5a9b8c7d4e3f2a1b6c5d4e9f8a7b3c2d1e0f9a8b7c6d5"
+      },
+      "compact": {
+        "description": "Compact URC representation",
+        "type": "string",
+        "example": "URC-NOVA-RID8A92F1-NTK4B11C8-NWA7F92D1-NCTAB45EF"
+      }
+    }
+  },
+
+  "use_cases": {
+    "case_1": {
+      "title": "Token Registration",
+      "description": "Register NOVA COIN token with complete identification",
+      "resource_type": "token",
+      "components": ["RID", "NTK", "NCT", "NDAO"]
+    },
+    "case_2": {
+      "title": "Smart Contract Tracking",
+      "description": "Track smart contract deployment and updates",
+      "resource_type": "contract",
+      "components": ["RID", "NCT", "NWA"]
+    },
+    "case_3": {
+      "title": "User Asset Verification",
+      "description": "Verify user ownership of digital assets",
+      "resource_type": "digital_asset",
+      "components": ["RID", "NWA", "NTK"]
+    },
+    "case_4": {
+      "title": "Governance Proposal Tracking",
+      "description": "Track governance proposals and voting",
+      "resource_type": "governance",
+      "components": ["RID", "NDAO", "NCT"]
+    },
+    "case_5": {
+      "title": "Cross-chain Asset Representation",
+      "description": "Represent NOVA assets across multiple chains",
+      "resource_type": "digital_asset",
+      "components": ["RID", "NTK", "NWA", "NCT"]
+    }
+  },
+
+  "generation_algorithm": {
+    "step_1": "Collect all component IDs (RID, NTK, NWA, NCT, NDAO)",
+    "step_2": "Create unified data string: 'RID|NTK|NWA|NCT|NDAO|NOVA'",
+    "step_3": "Apply SHA-256 hash to unified data",
+    "step_4": "Result is Master URC (64-character hex string)",
+    "step_5": "Create compact format from component suffixes",
+    "step_6": "Store both formats for reference"
+  },
+
+  "benefits": {
+    "uniqueness": "Each URC is globally unique",
+    "immutability": "Once created, URC cannot be changed",
+    "traceability": "Complete audit trail from resource to URC",
+    "interoperability": "Works across all NOVA ecosystem components",
+    "verification": "Cryptographically verified identity",
+    "scalability": "Supports unlimited resources",
+    "security": "SHA-256 cryptographic strength"
+  },
+
+  "integration_points": {
+    "smart_contracts": "URCRegistry.sol stores and manages URCs",
+    "token_contract": "NovaCoin.sol references URC for token identity",
+    "staking_contract": "Staking.sol uses URC for reward tracking",
+    "governance_contract": "Governance.sol uses URC for proposal tracking",
+    "off_chain_systems": "Generate/verify URCs in applications"
+  },
+
+  "compliance": {
+    "standards": ["ERC-20", "ERC-165", "JSON-LD"],
+    "formats": ["JSON", "Hex String", "Compact Format"],
+    "encoding": "UTF-8 / Hexadecimal",
+    "versioning": "Semantic versioning (1.0.0)"
+  }
+}
